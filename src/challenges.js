@@ -41,6 +41,8 @@ function createSequence(n) {
   return unarray
 }
 
+
+
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
@@ -57,18 +59,21 @@ const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
 function filterOut(original, toRemove) {
-  if (original.length === 0){
-    return null;
-  };
-  for (let i = 0; i < original.length; i++){
-    for (let j = 0; j < toRemove.length; j++) {
-      if (original[i] === toRemove[j]) {
-        original.splice(i,1);
+  if (original.length === 0) { return null };
+  let indexArray = [];
+  for (i of original) {
+    let flag = false;
+    for (j of toRemove) {
+      if (i === j) {
+        flag = true;
       };
-    };
+    }
+    if (!flag) {
+      indexArray.push(i)
+    }
   };
-  return original;
- }
+  return indexArray;
+}
 
 
 
@@ -88,10 +93,11 @@ const duplicateWords = [
 ];
 
 function uniquifyArray(duplicateWords) {
-  arrayKing = [];
-  
- }
-
+  if (duplicateWords.length === 0) { return null };
+  const arrayKing = [];
+  duplicateWords.forEach(function (element) { if (!arrayKing.includes(element)) { arrayKing.push(element) } });
+  return arrayKing;
+};
 
 
 
@@ -119,4 +125,24 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() { }
+function greatestProduct(matrixInput) {
+  const arrayValues = []
+  for (i in matrixInput) {
+    for (j in matrixInput[i]) {
+      if (i - 3 >= 0) {
+        arrayValues.push(matrixInput[Number(i) - 3][Number(j)] * matrixInput[Number(i) - 2][Number(j)] * matrixInput[Number(i) - 1][Number(j)] * matrixInput[Number(i)][Number(j)]);
+      };
+      if (i + 3 < matrixInput.length) {
+        arrayValues.push(matrixInput[Number(i) + 3][Number(j)] * matrixInput[Number(i) + 2][Number(j)] * matrixInput[Number(i) + 1][Number(j)] * matrixInput[Number(i) + 0][Number(j)]);
+      };
+      if (j - 3 >= 0) {
+        arrayValues.push(matrixInput[Number(i)][Number(j) - 3] * matrixInput[Number(i)][Number(j) - 2] * matrixInput[Number(i)][Number(j) - 1] * matrixInput[Number(i)][Number(j)]);
+      };
+      if (j + 3 < matrixInput.length) {
+        arrayValues.push(matrixInput[Number(i)][Number(j) + 3] * matrixInput[Number(i)][Number(j) + 2] * matrixInput[Number(i)][Number(j) + 1] * matrixInput[Number(i)][Number(j)]);
+      };
+    };
+  };
+  arrayValues.reverse();
+  return arrayValues[0];
+};
