@@ -136,7 +136,7 @@ function greatestProduct(matrixInput) {
         arrayValues.push(matrixInput[Number(i) + 3][Number(j) - 3] * matrixInput[Number(i) + 2][Number(j) - 2] * matrixInput[Number(i) + 1][Number(j) - 1] * matrixInput[Number(i)][Number(j)]);
       };
       if (i + 3 < matrixInput.length && j + 3 < matrixInput.length) {
-        arrayValues.push(matrixInput[Number(i) + 3][Number(j + 3)] * matrixInput[Number(i + 2)][Number(j + 2)] * matrixInput[Number(i + 1)][Number(j + 1)] * matrixInput[Number(i)][Number(j)]);
+        arrayValues.push(matrixInput[Number(i) + 3][Number(j) + 3] * matrixInput[Number(i) + 2][Number(j) + 2] * matrixInput[Number(i) + 1][Number(j) + 1] * matrixInput[Number(i)][Number(j)]);
       };
       if (i - 3 >= 0 && j + 3 < matrixInput.length) {
         arrayValues.push(matrixInput[Number(i) - 3][Number(j) + 3] * matrixInput[Number(i) - 2][Number(j) + 2] * matrixInput[Number(i) - 1][Number(j) + 1] * matrixInput[Number(i)][Number(j)]);
@@ -155,6 +155,6 @@ function greatestProduct(matrixInput) {
       };
     };
   };
-  arrayValues.reverse();
-  return arrayValues[0];
+  arrayValuesMax = Math.max.apply(Math, arrayValues);
+  return arrayValuesMax;
 };
