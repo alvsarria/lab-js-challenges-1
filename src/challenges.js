@@ -129,6 +129,18 @@ function greatestProduct(matrixInput) {
   const arrayValues = []
   for (i in matrixInput) {
     for (j in matrixInput[i]) {
+      if (i - 3 >= 0 && j - 3 >= 0) {
+        arrayValues.push(matrixInput[Number(i) - 3][Number(j) - 3] * matrixInput[Number(i) - 2][Number(j) - 2] * matrixInput[Number(i) - 1][Number(j) - 1] * matrixInput[Number(i)][Number(j)]);
+      };
+      if (i + 3 < matrixInput.length && j - 3 >= 0) {
+        arrayValues.push(matrixInput[Number(i) + 3][Number(j) - 3] * matrixInput[Number(i) + 2][Number(j) - 2] * matrixInput[Number(i) + 1][Number(j) - 1] * matrixInput[Number(i)][Number(j)]);
+      };
+      if (i + 3 < matrixInput.length && j + 3 < matrixInput.length) {
+        arrayValues.push(matrixInput[Number(i) + 3][Number(j + 3)] * matrixInput[Number(i + 2)][Number(j + 2)] * matrixInput[Number(i + 1)][Number(j + 1)] * matrixInput[Number(i)][Number(j)]);
+      };
+      if (i - 3 >= 0 && j + 3 < matrixInput.length) {
+        arrayValues.push(matrixInput[Number(i) - 3][Number(j) + 3] * matrixInput[Number(i) - 2][Number(j) + 2] * matrixInput[Number(i) - 1][Number(j) + 1] * matrixInput[Number(i)][Number(j)]);
+      };
       if (i - 3 >= 0) {
         arrayValues.push(matrixInput[Number(i) - 3][Number(j)] * matrixInput[Number(i) - 2][Number(j)] * matrixInput[Number(i) - 1][Number(j)] * matrixInput[Number(i)][Number(j)]);
       };
